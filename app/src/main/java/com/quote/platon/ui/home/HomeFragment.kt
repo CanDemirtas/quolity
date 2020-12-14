@@ -36,14 +36,14 @@ class HomeFragment : Fragment() {
 
 
         val quoteContent: TextView = root.findViewById(R.id.textView3)
-        val philosopherName: TextView = root.findViewById(R.id.textView2)
 
         quoteContent.text = resources.getStringArray(R.array.quotes).first()
+        val philosopherName: TextView = root.findViewById(R.id.textView2)
 
-        val webView: WebView = root.findViewById(R.id.webView)
         var swipeIndex = 0;
         var quotes = resources.getStringArray(R.array.quotes)
         var quotesTotalCount = quotes.count()
+        val webView: WebView = root.findViewById(R.id.webView)
 
         webView.loadUrl("file:///android_asset/index.html");
         webView.setOnTouchListener(object : OnSwipeTouchListener() {
@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
 
             }
         })
+
         return root
     }
 
