@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -19,6 +20,7 @@ import com.quote.platon.util.OnSwipeTouchListener
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var mediaPlayer: MediaPlayer
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
@@ -43,10 +45,16 @@ class HomeFragment : Fragment() {
         var swipeIndex = 0;
         var quotes = resources.getStringArray(R.array.quotes)
         var quotesTotalCount = quotes.count()
-        val webView: WebView = root.findViewById(R.id.webView)
 
-        webView.loadUrl("file:///android_asset/index.html");
-        webView.setOnTouchListener(object : OnSwipeTouchListener() {
+
+        var homeLayout = root.findViewById<ConstraintLayout>(R.id.homeLayout)
+        mediaPlayer = MediaPlayer.create(
+            context, R.raw.transition
+        )
+
+
+
+        homeLayout.setOnTouchListener(object : OnSwipeTouchListener() {
             override fun onSwipeLeft() {
                 if (swipeIndex == quotesTotalCount - 1)
                     swipeIndex = -1;
@@ -56,6 +64,12 @@ class HomeFragment : Fragment() {
                 quoteContent.text = '"' + content + '"'
                 philosopherName.text = "-" + name
                 Log.e("ViewSwipe", "onSwipeLeft")
+                if (mediaPlayer.isPlaying) {
+                    mediaPlayer.stop()
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                } else
+                    mediaPlayer.start()
 
             }
 
@@ -68,6 +82,12 @@ class HomeFragment : Fragment() {
                 quoteContent.text = '"' + content + '"'
                 philosopherName.text = "-" + name
                 Log.e("ViewSwipe", "Right")
+                if (mediaPlayer.isPlaying) {
+                    mediaPlayer.stop()
+                    mediaPlayer.prepare()
+                    mediaPlayer.start()
+                } else
+                    mediaPlayer.start()
 
             }
         })

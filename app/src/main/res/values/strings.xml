@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Ancient Greek Quotes</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -8,7 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="rate_menu">Rate Application</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Quotes</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
@@ -19,8 +19,6 @@
         <item name="Aristotle">"Pleasure in the job puts perfection in the work."-Aristotle</item>
         <item name="Aristotle">"Dignity does not consist in possessing honors, but in deserving them."-Aristotle</item>
         <item name="Aristotle">"You will never do anything in this world without courage. It is the greatest quality of the mind next to honor."-Aristotle</item>
-        <item name="Aristotle">"It is just that we should be grateful, not only to those with whose views we may agree, but also to those who have expressed more superficial views; for these also contributed something, by developing before us the powers of thought."-Aristotle</item>
-        <item name="Aristotle">"Persuasion is achieved by the speaker's personal character when the speech is spoken as to make us think him credible. We believe good men more fully and more readily than others. This is true generally whatever the question is, and absolutely true where exact certainty is impossible and opinions are divided."-Aristotle</item>
         <item name="Aristotle">"The life of money making is one undertaken under compulsion, and wealth is evidently not the good we are seeking; for it is merely useful and for the sake of something else."-Aristotle</item>
         <item name="Plotinus">"Knowledge, if it does not determine action, is dead to us."-Plotinus</item>
         <item name="Herodotus">"Great deeds are usually wrought at great risks."-Herodotus</item>
@@ -33,7 +31,6 @@
         <item name="Plato">"Better a little which is well done, than a great deal imperfectly."-Plato</item>
         <item name="Plato">"The beginning is the most important part of the work."-Plato</item>
         <item name="Plato">"Apply yourself both now and in the next life. Without effort, you cannot be prosperous. Though the land be good, you cannot have an abundant crop without cultivation."-Plato</item>
-        <item name="Plato">"All things will be produced in superior quantity and quality, and with greater ease, when each man works at a single occupation, in accordance with his natural gifts, and at the right moment, without meddling with anything else."-Plato</item>
         <item name="Plato">"He who is not a good servant will not be a good master."-Plato</item>
         <item name="Plato">"As the builders say, the larger stones do not lie well without the lesser."-Plato</item>
     </string-array>
