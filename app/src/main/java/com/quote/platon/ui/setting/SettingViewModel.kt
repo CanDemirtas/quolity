@@ -1,4 +1,4 @@
-package com.quote.platon.ui.gallery
+package com.quote.platon.ui.setting
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

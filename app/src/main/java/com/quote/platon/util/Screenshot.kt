@@ -20,9 +20,7 @@ object Screenshot {
         view.buildDrawingCache(true)
         val bitmapObject: Bitmap = Bitmap.createBitmap(view.getDrawingCache())
         view.setDrawingCacheEnabled(false)
-
         saveAndShareImage(bitmapObject, context, "Quotes")
-
 
     }
 
@@ -30,7 +28,7 @@ object Screenshot {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.putExtra(Intent.EXTRA_STREAM, uri)
-        //intent.setDataAndType(uri, "image/*")
+        intent.setDataAndType(uri, "image/*")
         context.startActivity(Intent.createChooser(intent, "Share"))
     }
 
@@ -60,7 +58,7 @@ object Screenshot {
             // getExternalStorageDirectory is deprecated in API 29
 
             if (!directory.exists()) {
-                directory.mkdirs()
+                directory.mkdir()
             }
             val fileName = System.currentTimeMillis().toString() + ".png"
             val file = File(directory, fileName)
