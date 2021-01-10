@@ -1,5 +1,6 @@
 package com.quote.platon.ui.home
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.media.MediaPlayer
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var mediaPlayer: MediaPlayer
     private val main: View? = null
+    private var isSwipeEffectEnable: Boolean = false;
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
@@ -40,24 +42,38 @@ class HomeFragment : Fragment() {
         //homeViewModel.text.observe(viewLifecycleOwner, Observer {
         //    textView.text = it
         //})
+        val preference =
+            context?.getSharedPreferences(
+                resources.getString(R.string.app_name),
+                Context.MODE_PRIVATE
+            )
+
+        isSwipeEffectEnable = preference?.getBoolean("swipeSoundEffect", true)!!
 
 
         val quoteContent: TextView = root.findViewById(R.id.textView3)
 
-        quoteContent.text = resources.getStringArray(R.array.quotes).first()
+
+
+
+
+
         val philosopherName: TextView = root.findViewById(R.id.textView2)
 
         var swipeIndex = 0;
         var quotes = resources.getStringArray(R.array.quotes)
         var quotesTotalCount = quotes.count()
 
+        val content = quotes[0].split("-").map { it.trim() }[0]
+        val name = quotes[0].split("-").map { it.trim() }[1]
+        quoteContent.text = '"' + content + '"'
+        philosopherName.text = "-" + name
 
         var homeLayout = root.findViewById<ConstraintLayout>(R.id.homeLayout)
         mediaPlayer = MediaPlayer.create(
             context, R.raw.transition
         )
-
-
+        mediaPlayer.setVolume(0.5F,0.5F)
         homeLayout.setOnTouchListener(object : OnSwipeTouchListener() {
 
             override fun onSwipeLeft() {
@@ -69,12 +85,16 @@ class HomeFragment : Fragment() {
                 quoteContent.text = '"' + content + '"'
                 philosopherName.text = "-" + name
                 Log.e("ViewSwipe", "onSwipeLeft")
-                if (mediaPlayer.isPlaying) {
-                    mediaPlayer.stop()
-                    mediaPlayer.prepare()
-                    mediaPlayer.start()
-                } else
-                    mediaPlayer.start()
+
+                if (isSwipeEffectEnable) {
+                    if (mediaPlayer.isPlaying) {
+                        mediaPlayer.stop()
+                        mediaPlayer.prepare()
+                        mediaPlayer.start()
+                    } else
+                        mediaPlayer.start()
+                }
+
 
             }
 
@@ -87,12 +107,15 @@ class HomeFragment : Fragment() {
                 quoteContent.text = '"' + content + '"'
                 philosopherName.text = "-" + name
                 Log.e("ViewSwipe", "Right")
-                if (mediaPlayer.isPlaying) {
-                    mediaPlayer.stop()
-                    mediaPlayer.prepare()
-                    mediaPlayer.start()
-                } else
-                    mediaPlayer.start()
+                if (isSwipeEffectEnable) {
+                    if (mediaPlayer.isPlaying) {
+                        mediaPlayer.stop()
+                        mediaPlayer.prepare()
+                        mediaPlayer.start()
+                    } else
+                        mediaPlayer.start()
+                }
+
 
             }
         })

@@ -1,8 +1,11 @@
 package com.quote.platon
 
 import android.Manifest
+import android.content.Context
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -14,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -21,6 +26,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.review.ReviewManagerFactory
+import com.quote.platon.ui.setting.SettingViewModel
 import com.quote.platon.util.Screenshot
 
 
@@ -28,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var settingViewModel: SettingViewModel
+    private var isMusicEnable: Boolean = false;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
 
+
+        settingViewModel =
+            ViewModelProviders.of(this).get(SettingViewModel::class.java)
+
         ActivityCompat.requestPermissions(
             this,
             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
@@ -50,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_setting, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_setting, R.id.nav_info
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -59,17 +71,66 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer = MediaPlayer.create(
             this, R.raw.nome
         )
+        val preference =
+            this.getSharedPreferences(
+                resources.getString(R.string.app_name),
+                Context.MODE_PRIVATE
+            )
+        val landscapeOrientation = preference?.getBoolean("landscapeOrientation", true)!!
+        if (landscapeOrientation)
+            requestedOrientation =
+                if (Build.VERSION.SDK_INT < 9) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
 
-        mediaPlayer.setOnPreparedListener {
+        isMusicEnable = preference?.getBoolean("music", true)!!
+
+
+
+
+
+        mediaPlayer.stop()
+
+        if (isMusicEnable) {
+            mediaPlayer.prepare()
+            mediaPlayer.isLooping = true
             mediaPlayer.start()
         }
+
 
         val webView: WebView = findViewById(R.id.webView)
 
         webView.loadUrl("file:///android_asset/index.html");
 
+        settingViewModel.landscapeOrientation.observe(this, Observer {
+            requestedOrientation = if (it)
+                if (Build.VERSION.SDK_INT < 9) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+            else
+                if (Build.VERSION.SDK_INT < 9) ActivityInfo.SCREEN_ORIENTATION_USER else ActivityInfo.SCREEN_ORIENTATION_USER
+
+        })
+
+        settingViewModel.musicState.observe(this, Observer {
+            isMusicEnable = it
+            if (it) {
+                mediaPlayer.prepare()
+                mediaPlayer.start()
+            } else
+                mediaPlayer.stop()
+        })
+
     }
 
+
+    override fun onPause() {
+        if (isMusicEnable)
+            mediaPlayer.pause()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        if (isMusicEnable)
+            mediaPlayer.start()
+        super.onResume()
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

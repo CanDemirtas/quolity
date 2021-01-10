@@ -7,15 +7,42 @@
     tools:context=".ui.setting.SettingFragment">
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/landscapeOrientationSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="120dp"
-        android:text="Music"
+        android:layout_marginTop="12dp"
+        android:switchTextAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Only Landscape"
         android:textColor="@color/design_default_color_on_primary"
         android:textColorLink="@color/colorPrimary"
+        android:theme="@style/SCBSwitch"
+        app:layout_constraintEnd_toEndOf="@+id/swipeSoundEffectSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/swipeSoundEffectSwitch" />
+
+    <Switch
+        android:id="@+id/musicSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:switchTextAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Music "
+        android:textColor="@color/design_default_color_on_primary"
+        android:textColorLink="@color/colorPrimary"
+        android:theme="@style/SCBSwitch"
+        app:layout_constraintEnd_toEndOf="@+id/swipeSoundEffectSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/landscapeOrientationSwitch" />
+
+    <Switch
+        android:id="@+id/swipeSoundEffectSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="Swipe Sound Effect"
+        android:textColor="@color/design_default_color_on_primary"
+        android:textColorLink="@color/colorPrimary"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -24,4 +51,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
