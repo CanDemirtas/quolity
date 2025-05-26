@@ -8,7 +8,14 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/parthenon"
             android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_bertrand_russell"
+            android:icon="@drawable/abc_vector_test"
+            android:title="@string/bertrand_russell" />
 
+    </group>
+
+    <group android:id="@+id/nav_section_misc">
         <item
             android:id="@+id/nav_info"
             android:icon="@drawable/info"

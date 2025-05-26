@@ -11,12 +11,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.quote.platon.MainActivity
 import com.quote.platon.R
 import com.quote.platon.util.OnSwipeTouchListener
 import com.quote.platon.util.Screenshot
@@ -55,13 +57,28 @@ class HomeFragment : Fragment() {
 
 
 
-
-
-
         val philosopherName: TextView = root.findViewById(R.id.textView2)
+        val authorKey = arguments?.getString("author") ?: "quotes"
+        val webView = (activity as? MainActivity)?.findViewById<WebView>(R.id.webView)
 
         var swipeIndex = 0;
-        var quotes = resources.getStringArray(R.array.quotes)
+
+        val quotes = when (authorKey) {
+            "quotes" -> {
+                webView?.loadUrl("file:///android_asset/index.html");
+
+                resources.getStringArray(R.array.quotes)}
+            "bertrand_russell" -> {
+
+
+                webView?.loadUrl("file:///android_asset/bertrand_russell_background.html");
+                resources.getStringArray(R.array.bertrandRussell)
+
+
+            }
+            else -> resources.getStringArray(R.array.quotes)
+        }
+
         var quotesTotalCount = quotes.count()
 
         val content = quotes[0].split("-").map { it.trim() }[0]

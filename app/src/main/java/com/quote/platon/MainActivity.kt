@@ -26,6 +26,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.review.ReviewManagerFactory
+import com.quote.platon.ui.home.HomeFragment
 import com.quote.platon.ui.setting.SettingViewModel
 import com.quote.platon.util.Screenshot
 
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_setting, R.id.nav_info
+                R.id.nav_home, R.id.nav_bertrand_russell
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -82,9 +83,6 @@ class MainActivity : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT < 9) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
 
         isMusicEnable = preference?.getBoolean("music", true)!!
-
-
-
 
 
         mediaPlayer.stop()
@@ -162,7 +160,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
 
         if (item.itemId == R.id.action_settings) {
-            Log.d("", "action_settings")
+
             val manager = ReviewManagerFactory.create(this)
             val request = manager.requestReviewFlow()
             request.addOnCompleteListener { request ->
@@ -185,11 +183,42 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.nav_setting)
         }
 
+
+        if (item.itemId == R.id.nav_bertrand_russell) {
+
+            val manager = ReviewManagerFactory.create(this)
+            val request = manager.requestReviewFlow()
+            request.addOnCompleteListener { request ->
+                if (request.isSuccessful) {
+                    val reviewInfo = request.result
+                    val flow = manager.launchReviewFlow(this, reviewInfo)
+                    flow.addOnCompleteListener {
+                        // Değerlendirme süreci tamamlandıktan sonra fragment geç
+                        openHomeFragment("bertrand_russell")
+                    }
+                } else {
+                    // Değerlendirme başarısız olsa da fragment geç
+                    openHomeFragment("bertrand_russell")
+                }
+            }
+        }
+
         if (item.itemId == R.id.share_quote) {
             Screenshot.takeScreenshot(findViewById<View>(R.id.include), this)
         }
 
         return super.onOptionsItemSelected(item)
+    }
+    private fun openHomeFragment(author: String) {
+        val fragment = HomeFragment()
+        val bundle = Bundle()
+        bundle.putString("author", author)
+        fragment.arguments = bundle
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_home, fragment) // container ID'yi kendi layout'undakiyle değiştir
+            //.addToBackStack(null)
+            .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -15,6 +15,7 @@
     <string name="share_quote">Share Quote</string>
     <string name="home_second">Home Second</string>
     <string name="menu_info">Info</string>
+    <string name="bertrand_russell">Bertrand Russell</string>
 
 
 
@@ -163,6 +164,30 @@
         <item name="Plato">"Speaking is the shadow of action."-Democritus</item>
         <item name="Plato">"Helen? Ship destroyer, men destroyer, city destroyer."-Aeschylus</item>
     </string-array>
-
+    <string-array name="bertrandRussell">
+        <item name="Bertrand Russell">"The fundamental cause of the trouble is that in the modern world the stupid are cocksure while the intelligent are full of doubt." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Of all forms of caution, caution in love is perhaps the most fatal to true happiness." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"To fear love is to fear life, and those who fear life are already 3-parts dead." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"I would never die for my beliefs because I might be wrong." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"A stupid man's report of what a clever man says can never be accurate, because he unconsciously translates what he hears into something he can understand." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Science may set limits to knowledge, but should not set limits to imagination." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Love is wise, hatred is foolish." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Men are born ignorant, not stupid; they are made stupid by education." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Whoever wishes to become a philosopher must learn not to be frightened by absurdities." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Do not fear to be eccentric in opinion, for every opinion now accepted was once eccentric." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"There are two motives for reading a book; one, that you enjoy it; the other, that you can boast about it." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Fear is the main source of superstition, and one of the main sources of cruelty. To conquer fear is the beginning of wisdom." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"The hardest thing to learn in life is which bridge to cross and which to burn." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"It's easy to fall in love. The hard part is finding someone to catch you." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"To teach how to live without certainty, and yet without being paralyzed by hesitation, is perhaps the chief thing that philosophy, in our age, can still do for those who study it." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Most people would sooner die than think; in fact, they do so." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"It is the preoccupation with possessions, more than anything else, that prevents us from living freely and nobly." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Those who have never known the deep intimacy and the intense companionship of happy mutual love have missed the best thing that life has to give." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"Collective fear stimulates herd instinct, and tends to produce ferocity toward those who are not regarded as members of the herd." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"It has been said that man is a rational animal. All my life I have been searching for evidence which could support this." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"No one gossips about other people’s secret virtues." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"We know very little, and yet it is astonishing that we know so much, and still more astonishing that so little knowledge can give us so much power." - Bertrand Russell</item>
+        <item name="Bertrand Russell">"The secret of happiness is very simply this: let your interests be as wide as possible, and let your reactions to the things and persons that interest you be as far as possible friendly rather than hostile." - Bertrand Russell</item>
+    </string-array>
 
 </resources>
