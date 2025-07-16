@@ -9,9 +9,9 @@
             android:icon="@drawable/parthenon"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_bertrand_russell"
-            android:icon="@drawable/abc_vector_test"
-            android:title="@string/bertrand_russell" />
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/star"
+            android:title="@string/favorites" />
 
     </group>
 

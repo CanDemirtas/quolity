@@ -15,8 +15,8 @@
     <string name="share_quote">Share Quote</string>
     <string name="home_second">Home Second</string>
     <string name="menu_info">Info</string>
+    <string name="favorites">Favorites</string>
     <string name="bertrand_russell">Bertrand Russell</string>
-
 
 
     <string-array name="quotes">
@@ -31,7 +31,7 @@
         <item name="Demosthenes">"The only true wisdom is in knowing you know nothing."-Demosthenes</item>
         <item name="Epictetus">"Wealth consists not in having great possessions, but in having few wants."-Epictetus</item>
         <item name="Epictetus">"Make the best use of what's in your power and take the rest as it happens."-Epictetus</item>
-        <item name="Plato">"A good decision is based on knowledge and not numbers."</item>
+        <item name="Plato">"A good decision is based on knowledge and not numbers."-Plato</item>
         <item name="Plato">"Better a little which is well done, than a great deal imperfectly."-Plato</item>
         <item name="Plato">"The beginning is the most important part of the work."-Plato</item>
         <item name="Plato">"Apply yourself both now and in the next life. Without effort, you cannot be prosperous. Though the land be good, you cannot have an abundant crop without cultivation."-Plato</item>
@@ -105,7 +105,7 @@
         <item name="Plato">"The beginning is half of everything."-Plato</item>
         <item name="Plato">"In the beginning there was chaos."-Hesiod</item>
         <item name="Plato">"Wickedness and injustice are intentional."-Aristotle</item>
-        <item name="Plato">"Slaves and master could never be friends. :))"-Plato</item>
+        <item name="Plato">"Slaves and master could never be friends."-Plato</item>
         <item name="Plato">"Soon, you will forget everything, and soon everybody will forget you."-Marcus Aurelius</item>
         <item name="Plato">"One cannot evade destiny."-Ancient Greek phrase</item>
         <item name="Plato">"Much learning does not teach the mind."-Heraclitus</item>
@@ -164,7 +164,7 @@
         <item name="Plato">"Speaking is the shadow of action."-Democritus</item>
         <item name="Plato">"Helen? Ship destroyer, men destroyer, city destroyer."-Aeschylus</item>
     </string-array>
-    <string-array name="bertrandRussell">
+    <string-array name="favorites">
         <item name="Bertrand Russell">"The fundamental cause of the trouble is that in the modern world the stupid are cocksure while the intelligent are full of doubt." - Bertrand Russell</item>
         <item name="Bertrand Russell">"Of all forms of caution, caution in love is perhaps the most fatal to true happiness." - Bertrand Russell</item>
         <item name="Bertrand Russell">"To fear love is to fear life, and those who fear life are already 3-parts dead." - Bertrand Russell</item>
@@ -189,5 +189,8 @@
         <item name="Bertrand Russell">"We know very little, and yet it is astonishing that we know so much, and still more astonishing that so little knowledge can give us so much power." - Bertrand Russell</item>
         <item name="Bertrand Russell">"The secret of happiness is very simply this: let your interests be as wide as possible, and let your reactions to the things and persons that interest you be as far as possible friendly rather than hostile." - Bertrand Russell</item>
     </string-array>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

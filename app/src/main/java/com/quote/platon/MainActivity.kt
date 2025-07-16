@@ -24,6 +24,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.quote.platon.ui.home.HomeFragment
@@ -63,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_bertrand_russell
+                R.id.nav_home, R.id.nav_favorites
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -77,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 resources.getString(R.string.app_name),
                 Context.MODE_PRIVATE
             )
-        val landscapeOrientation = preference?.getBoolean("landscapeOrientation", true)!!
+        val landscapeOrientation = preference?.getBoolean("landscapeOrientation", false)!!
         if (landscapeOrientation)
             requestedOrientation =
                 if (Build.VERSION.SDK_INT < 9) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
@@ -93,6 +96,13 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer.start()
         }
 
+
+        val adView = AdView(this)
+        adView.adUnitId = "ca-app-pub-5856186651471440/6875909231"
+
+        MobileAds.initialize(this) {}
+        val adRequest = AdRequest.Builder().build()
+        findViewById<AdView>(R.id.adView).loadAd(adRequest)
 
         val webView: WebView = findViewById(R.id.webView)
 
@@ -184,7 +194,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        if (item.itemId == R.id.nav_bertrand_russell) {
+        if (item.itemId == R.id.nav_favorites) {
 
             val manager = ReviewManagerFactory.create(this)
             val request = manager.requestReviewFlow()
@@ -194,11 +204,11 @@ class MainActivity : AppCompatActivity() {
                     val flow = manager.launchReviewFlow(this, reviewInfo)
                     flow.addOnCompleteListener {
                         // Değerlendirme süreci tamamlandıktan sonra fragment geç
-                        openHomeFragment("bertrand_russell")
+                        openHomeFragment("favorites")
                     }
                 } else {
                     // Değerlendirme başarısız olsa da fragment geç
-                    openHomeFragment("bertrand_russell")
+                    openHomeFragment("favorites")
                 }
             }
         }

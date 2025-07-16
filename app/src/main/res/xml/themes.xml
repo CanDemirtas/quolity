@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Uygulamanın ana teması -->
+    <style name="Theme.Platon" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Renkler -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/teal_200</item>
+
+        <!-- Sistem çubukları -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+    </style>
+
+    <!-- Splash ekranı teması -->
+    <style name="Theme.Platon.Splash" parent="Theme.SplashScreen">
+        <!-- Splash arka plan -->
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <!-- Splash animasyon ikonu -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <!-- Splash sonrası geçilecek tema -->
+        <item name="postSplashScreenTheme">@style/Theme.Platon</item>
+    </style>
+
+    <style name="Theme.Platon.Splash" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="postSplashScreenTheme">@style/Theme.Platon</item>
+    </style>
+</resources>
